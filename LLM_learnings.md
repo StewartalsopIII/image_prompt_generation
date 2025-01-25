@@ -29,6 +29,9 @@
    * "Separated configuration from core functionality for better maintainability"
    * "Implemented logging for debugging API and file operations"
    * "Created backup functionality before destructive operations"
+   * "Implemented exponential backoff for API retries with configurable parameters"
+   * "Used custom exceptions to differentiate between API errors and file handling errors"
+   * "Added pre-validation steps (disk space, image format) before destructive operations"
 
 ## 4. Mistakes and Avoidance
 * Document errors or issues that occurred and how they were resolved
@@ -39,6 +42,9 @@
    * "When testing image operations, use real image data bytes instead of mock objects"
    * "Always validate images before saving to prevent corruption"
    * "Check disk space before file operations to prevent failed writes"
+   * "Silent failures in file operations (mv command) can lead to lost changes - always verify file content after moves"
+   * "Using WriteIfEmpty followed by mv can fail silently - use FileEdit for updates to existing files"
+   * "Git commits should be verified by checking file content in the repo, not just assuming silent commands succeeded"
 
 ## 5. Validation Lessons
 * Note effective validation strategies and steps
@@ -49,6 +55,9 @@
    * "Use pytest fixtures to share common test setup"
    * "Mock external API calls with realistic response data"
    * "Always use timeouts for external API calls to prevent hanging"
+   * "For image tests, use real image bytes rather than empty mock objects"
+   * "Test both success and failure paths in error handling code"
+   * "Use mocking to test different API error scenarios (rate limits, auth, network)"
 
 ## 6. General Notes for Continuity
 * Project context and important background information
@@ -62,3 +71,4 @@
 [2025-01-25] - Added virtual environment management learnings
 [2025-01-25] - Added file editing and validation strategies
 [2025-01-25] - Added error handling insights and testing patterns
+[2025-01-25] - Added lessons about file operation verification and silent failures
