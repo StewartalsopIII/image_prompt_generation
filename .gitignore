@@ -1,0 +1,22 @@
+# Environment variables
+.env
+
+# Virtual environment
+venv/
+
+# Python cache files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Generated images
+*.png
+*.jpg
+*.jpeg
+
+# IDE specific files
+.vscode/
+.idea/
+
+# System files
+.DS_Store
